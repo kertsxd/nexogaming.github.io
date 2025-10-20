@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexogaming</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+      margin: 0;
+      padding: 0;
+      background-image: url("https://w.wallhaven.cc/full/ym/wallhaven-ymwmek.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Orbitron', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size: 38px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 40px 0;
+    }
+
+    .logo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid #09cf2a;
+      box-shadow: 0 0 40px #09cf2a, 0 0 10px #fff;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .games-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin: 40px auto;
+      max-width: 1100px;
+      flex: 1;
+    }
+
+    .game-card {
+      background: rgba(30, 30, 30, 0.85);
+      border: 2px solid #09cf2a;
+      border-radius: 18px;
+      width: 260px;
+      height: 300px;
+      box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 40px #09cf2a, 0 0 20px #fff;
+      border-color: #fff;
+    }
+
+    .game-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.2) brightness(0.85);
+      opacity: 0.85;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .game-card:hover .game-image {
+      filter: grayscale(0) brightness(1.1) drop-shadow(0 0 20px #09cf2a);
+      opacity: 1;
+    }
+
+    .game-title {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+      margin-bottom: 18px;
+      margin-top: 180px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .game-link {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 8px 22px;
+      background: #09cf2a;
+      color: #111;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #09cf2a;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .game-card:hover .game-link {
+      background: #fff;
+      color: #09cf2a;
+    }
+
+    @media (max-width: 900px) {
+      .games-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Footer */
+   /* ...existing code... */
+.footer {
+  background: rgba(0, 0, 0, 0.75);
+  color: #09cf2a;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 16px;
+  box-shadow: 0 -2px 20px #09cf2a55;
+  border-top: 2px solid #09cf2a;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+  position: fixed;      /* Cambia a fixed */
+  left: 0;
+  bottom: 0;            /* Siempre abajo */
+  width: 100%;          /* Ocupa todo el ancho */
+  z-index: 100;
+}
+body {
+  padding-bottom: 100px; /* Espacio para el footer */
+}
+
+    .footer.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+
+    .footer .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .footer .social-icons img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 4px #09cf2a);
+    }
+    /* Menú lateral */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.9);
+  border-right: 2px solid #09cf2a;
+  box-shadow: 4px 0 15px rgba(9, 207, 42, 0.4);
+  padding-top: 100px;
+  z-index: 1000;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #09cf2a;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  padding: 10px 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: #09cf2a;
+  color: #111;
+  border-radius: 8px;
+}
+
+/* Espacio al contenido por el menú lateral */
+body {
+  padding-left: 200px;
+}
+
+  </style>
+  <style>
+.info-card {
+  background: rgba(30, 30, 30, 0.92);
+  border: 2px solid #09cf2a;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 480px;
+  min-height: 180px;
+  box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px auto;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.info-card h2 {
+  color: #09cf2a;
+  font-size: 1.6em;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.info-card p {
+  color: #fff;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}</style>
+  <!-- Fuente cyberpunk -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <h1>Bienvenidos a Nexogamer</h1>
+  <div class="logo-container">
+    <div class="logo">
+      <!-- Cambia la URL de abajo por la de tu logo -->
+      <img src="https://i.pinimg.com/736x/c7/74/4a/c7744af71ae07746877f839099632a31.jpg" alt="Logo Nexogamer" />
+    </div>
+  </div>
+  <div class="games-section">
+    <!-- Cambia la propiedad background-image de cada .game-image por la imagen que quieras para cada juego -->
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg');"
+      ></div>
+      <div class="game-title">DOOM</div>
+      <a class="game-link" href="doom.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250');"
+      ></div>
+      <div class="game-title">The Legend of Zelda</div>
+      <a class="game-link" href="thelegendofzelda.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://howlongtobeat.com/games/5843_Mega_Man_X.png');"
+      ></div>
+      <div class="game-title">Mega Man</div>
+      <a class="game-link" href="megaman.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg');"
+      ></div>
+      <div class="game-title">Mario Kart 64</div>
+      <a class="game-link" href="Mario kart 64.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png');"
+      ></div>
+      <div class="game-title">Mario World</div>
+      <a class="game-link" href="Mario world.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png');"
+      ></div>
+      <div class="game-title">Metal Slug X</div>
+      <a class="game-link" href="metalslug.html">Jugar</a>
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg');"
+      ></div>
+      <div class="game-title"> Donkey kong</div>
+      <a class="game-link" href="donkeykong.html">Jugar</a>  
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://i.redd.it/s9vwlq5w2afe1.png');"
+      ></div>
+      <div class="game-title">banjo-Tooie</div>
+      <a class="game-link" href="banjotooie.html">Jugar</a>
+    </div>
+     <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Conkersbfdbox.jpg/250px-Conkersbfdbox.jpg');"
+      ></div>
+      <div class="game-title">Conker´s bad fur day</div>
+      <a class="game-link" href="conkers bad.html">Jugar</a>
+    </div>
+     <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://assets1.ignimgs.com/2019/06/04/legend-of-zelda-majoras-mask---button-1559683061466.jpg');"
+      ></div>
+      <div class="game-title">The legend of Zelda Majora´s mask</div>
+      <a class="game-link" href="majoras mask.html">Jugar</a>
+    </div>
+      <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://cdn.mobygames.com/covers/3221449-super-smash-bros-nintendo-64-front-cover.jpg');"
+      ></div>
+      <div class="game-title">Super Smash bros</div>
+      <a class="game-link" href="Smash bros.html">Jugar</a>
+    </div>
+     <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://e.snmc.io/lk/f/x/35368234e1f245bb95584a7556e48ecd/11799945');"
+      ></div>
+      <div class="game-title">Kirby 64: Crystal Shards</div>
+      <a class="game-link" href="kirbycristal.html">Jugar</a>
+    </div>
+     
+  <!-- MENÚ LATERAL -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nexogaming juegos.html">Juegos</a></li>
+      <li><a href="nexogaming curiosidades.html ">Curiosidades</a></li>
+      <li><a href="nexogaming personajes.html">Personajes</a></li>
+      <li><a href="nexogaming atajos.html">Atajos</a></li>
+    </ul>
+  </nav>
+
+ <footer class="footer" id="footer">
+    <p>Síguenos en redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vj8CdVHW7sbzInZ0eATSvDdiYbiHWvCY_w&s" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const footer = document.getElementById('footer');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+
+    window.addEventListener('load', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

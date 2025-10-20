@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexogaming - Atajos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+      margin: 0;
+      padding: 0;
+      background-image: url("https://w.wallhaven.cc/full/ym/wallhaven-ymwmek.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.9);
+      border-right: 2px solid #09cf2a;
+      box-shadow: 4px 0 15px rgba(9, 207, 42, 0.4);
+      padding-top: 100px;
+      z-index: 1000;
+    }
+    nav.sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav.sidebar ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+    nav.sidebar ul li a {
+      color: #09cf2a;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      padding: 10px 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav.sidebar ul li a:hover {
+      background: #09cf2a;
+      color: #111;
+      border-radius: 8px;
+    }
+    main.content {
+      margin-left: 220px;
+      padding: 30px 40px 60px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      width: 100%;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    h1 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size: 38px;
+      margin: 30px 0 10px 0;
+      letter-spacing: 2px;
+      flex-basis: 100%;
+      width: 100%;
+    }
+    .shortcut-card {
+      background: rgba(30, 30, 30, 0.92);
+      border: 2px solid #09cf2a;
+      border-radius: 18px;
+      width: 420px;
+      min-height: 120px;
+      box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 0 0 32px 0;
+      padding: 24px 18px 18px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .shortcut-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 40px #09cf2a, 0 0 20px #fff;
+      border-color: #fff;
+    }
+    .shortcut-title {
+      color: #09cf2a;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+      letter-spacing: 1px;
+      text-align: left;
+      font-weight: bold;
+    }
+    .shortcut-game {
+      color: #fff;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .shortcut-description {
+      color: #fff;
+      font-size: 1em;
+      text-align: left;
+      line-height: 1.5;
+      margin: 0;
+      word-break: break-word;
+    }
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.75);
+      color: #09cf2a;
+      text-align: center;
+      padding: 8px 6px;
+      font-size: 15px;
+      box-shadow: 0 -2px 20px #09cf2a55;
+      border-top: 2px solid #09cf2a;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .footer.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    body {
+      padding-bottom: 38px;
+    }
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+    .footer .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .footer .social-icons a:hover {
+      transform: scale(1.2);
+    }
+    .footer .social-icons img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 4px #09cf2a);
+    }
+    @media (max-width: 900px) {
+      main.content {
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 4vw 60px 4vw;
+      }
+      .shortcut-card {
+        width: 98vw;
+        min-width: 0;
+      }
+      nav.sidebar {
+        width: 60px;
+        padding-top: 60px;
+      }
+      nav.sidebar ul li a {
+        font-size: 0;
+        padding: 10px 0;
+      }
+      nav.sidebar ul li a::before {
+        content: attr(data-icon);
+        font-size: 24px;
+        color: #09cf2a;
+        display: block;
+      }
+    }
+    .shortcut-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #09cf2a55;
+      margin-bottom: 10px;
+      background: #222;
+      border: 2px solid #09cf2a;
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html" data-icon="🏠">Inicio</a></li>
+      <li><a href="nexogaming juegos.html" data-icon="🎮">Juegos</a></li>
+      <li><a href="nexogaming curiosidades.html" data-icon="❓">Curiosidades</a></li>
+      <li><a href="nexogaming personajes.html" data-icon="👾">Personajes</a></li>
+      <li><a href="nexogaming atajos.html" data-icon="⌨️">Atajos</a></li>
+    </ul>
+  </nav>
+  <main class="content">
+    <h1>Atajos y Glitches </h1>
+    <!-- DOOM -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg" alt="DOOM" />
+      <div class="shortcut-title">Level select</div>
+      <div class="shortcut-game">DOOM</div>
+      <div class="shortcut-description">En la pantalla de título, presiona Abajo, X, A, B, Y, Arriba, Izquierda, Derecha, A.
+
+Si lo haces correctamente, aparecerá un menú de selección de nivel.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg" alt="DOOM" />
+      <div class="shortcut-title">Pistola ilimitada</div>
+      <div class="shortcut-game">DOOM</div>
+      <div class="shortcut-description">En el juego, si agarras un arma nueva, puedes disparar una ráfaga de balas sin que la munición disminuya. Para que este glitch funcione, debes estar en un estado de bajo framerate (cuando hay muchos enemigos en pantalla). Simplemente, cambia de arma rápidamente y dispara para explotar este error.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg" alt="DOOM" />
+      <div class="shortcut-title">Modo Dios</div>
+      <div class="shortcut-game">DOOM</div>
+      <div class="shortcut-description">IDDQD: Te hace invencible. Es el famoso Modo Dios. Tu salud se mantiene en 100% y no recibes daño.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg" alt="DOOM" />
+      <div class="shortcut-title">Arsenal lleno</div>
+      <div class="shortcut-game">DOOM</div>
+      <div class="shortcut-description"> IDFA:te da todas las armas, munición y armadura, sin darte las llaves.</div>
+    </div>
+    
+    <!-- Super Mario World -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png" alt="Super Mario World" />
+      <div class="shortcut-title">99 vidas</div>
+      <div class="shortcut-game">Super Mario World</div>
+      <div class="shortcut-description">Este es el truco más famoso del juego. Para hacerlo, necesitas un Koopa y una cuesta. Carga a un Koopa, súbete a una cuesta empinada y suéltalo para que rebote sin parar. Salta sobre él una vez para empezar a ganar puntos y luego, sin moverte, sigue saltando. Verás cómo tus puntos se disparan hasta que obtienes vidas extra.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png" alt="Super Mario World" />
+      <div class="shortcut-title">Mundo estrella
+      </div>
+      <div class="shortcut-game">Super Mario World</div>
+      <div class="shortcut-description">El Mundo Estrella es un atajo directo a diferentes partes del mapa. Si logras encontrar las cinco salidas secretas que lo desbloquean, podrás acceder a sus niveles. Una vez que superes todos los niveles del Mundo Estrella, abrirás el Mundo Especial, que contiene los niveles más difíciles y un atajo para llegar al final del juego.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png" alt="Super Mario World" />
+      <div class="shortcut-title">Llaves secreta</div>
+      <div class="shortcut-game">Super Mario World</div>
+      <div class="shortcut-description">En muchos niveles, encontrarás una llave oculta. Si la llevas a su cerradura correspondiente, descubrirás una salida secreta que abre un nuevo camino o te lleva a un nivel extra.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png" alt="Super Mario World" />
+      <div class="shortcut-title">vuelo infinito Glitch</div>
+      <div class="shortcut-game">Super Mario World</div>
+      <div class="shortcut-description">Este es uno de los trucos más útiles. Una vez que tengas la capa, corre para llenar tu barra de vuelo. Cuando saltes, mantén el D-pad hacia adelante y rápidamente pulsa la dirección opuesta (hacia atrás). Mario se moverá en un patrón ondulado. Si lo haces correctamente, no perderás altura y podrás volar sobre casi todo el nivel, saltándote todos los obstáculos.</div>
+    </div>
+    </div>
+    <!-- Metal Slug X -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png" alt="Metal Slug X" />
+      <div class="shortcut-title">Vidas infinitas</div>
+      <div class="shortcut-game">Metal Slug X</div>
+      <div class="shortcut-description">En el menú principal, usa el D-pad para ir a la opción "Options".
+
+Mantén presionado L1 y R2 al mismo tiempo.
+
+Luego, pulsa Arriba, Abajo, Arriba, Abajo, Arriba, Abajo, Cuadrado, Cuadrado, Cuadrado, X, X, X.
+
+Si lo hiciste bien, escucharás un sonido. Ahora, tus vidas no se agotarán.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png" alt="Metal Slug X" />
+      <div class="shortcut-title">pistol glitch</div>
+      <div class="shortcut-game">Metal Slug X</div>
+      <div class="shortcut-description">Este es un glitch muy famoso. Si disparas tu pistola y, al mismo tiempo que aprietas el botón de disparo, mueves rápidamente el joystick, tu personaje disparará más rápido de lo normal.
+
+Es una forma de aumentar el daño de tu arma inicial y es muy útil al principio del juego.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png" alt="Metal Slug X" />
+      <div class="shortcut-title">Glitch de granadas</div>
+      <div class="shortcut-game">Metal Slug X</div>
+      <div class="shortcut-description">GranadaEn ocasiones, si lanzas una granada y te mueves rápidamente, el juego puede "olvidar" que lanzaste una y te permitirá lanzar otra casi de inmediato.
+
+Esto es más un error de sincronización que un truco controlable, pero puede darte una ráfaga de daño explosivo. Glitch</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png" alt="Metal Slug X" />
+      <div class="shortcut-title">Glitch de los tanques</div>
+      <div class="shortcut-game">Metal Slug X</div>
+      <div class="shortcut-description">En algunas misiones, si te subes y bajas de un tanque (Metal Slug) muy rápidamente, a veces la munición de su cañón principal no disminuirá. Esto es muy útil para la misión final, donde puedes usar el tanque para infligir gran cantidad de daño.</div>
+    </div>
+    
+    <!-- Donkey Kong 64 -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg" alt="Donkey Kong 64" />
+      <div class="shortcut-title">Glitch de bananas infinitas</div>
+      <div class="shortcut-game">Donkey Kong 64</div>
+      <div class="shortcut-description">Este es un error muy útil para los que buscan completar el 100%. En algunas áreas, si un Kong recoge una banana de su color, a veces puedes usar otro Kong para acercarte a la misma banana desde un ángulo diferente y recogerla de nuevo. Esto te permite acumular bananas rápidamente sin tener que buscar más.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg" alt="Donkey Kong 64" />
+      <div class="shortcut-title">El glitch del 101%</div>
+      <div class="shortcut-game">Donkey Kong 64</div>
+      <div class="shortcut-description"> Este es más un error de visualización que un truco. Si logras completar el juego al 100% (recogiendo todas las bananas, monedas, llaves, etc.) y te aseguras de tener el ítem de la Banana Fairy, el juego mostrará un porcentaje de 101% en la pantalla de estadísticas. Es un logro que prueba que dominaste el juego por completo.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg" alt="Donkey Kong 64" />
+      <div class="shortcut-title">Saltar el nivel: Angry Aztec</div>
+      <div class="shortcut-game">Donkey Kong 64</div>
+      <div class="shortcut-description">Con Tiny Kong, puedes usar el cañón para volar por encima del templo. Si logras aterrizar correctamente, puedes saltarte el laberinto por completo.
+
+</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg" alt="Donkey Kong 64" />
+      <div class="shortcut-title">Atajo para Lanky</div>
+      <div class="shortcut-game">Donkey Kong 64</div>
+      <div class="shortcut-description"> en la batalla de Lanky contra el dragón, puedes usar el "Trombone Slam" para aturdirlo en lugar de esperar a que dispare.</div>
+    </div>
+    
+    <!-- Mario Kart 64 -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg" alt="Mario Kart 64" />
+      <div class="shortcut-title">Wario Stadium Shortcut</div>
+      <div class="shortcut-game">Mario Kart 64</div>
+      <div class="shortcut-description">Salta la pared con un turbo y acorta gran parte del circuito.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg" alt="Mario Kart 64" />
+      <div class="shortcut-title">Rainbow Road Lap Skip</div>
+      <div class="shortcut-game">Mario Kart 64</div>
+      <div class="shortcut-description">Salta la pista en la primera curva para completar vueltas en segundos.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg" alt="Mario Kart 64" />
+      <div class="shortcut-title">Koopa Troopa Beach Shortcut</div>
+      <div class="shortcut-game">Mario Kart 64</div>
+      <div class="shortcut-description">Usa el salto en la rampa para llegar directo a la meta.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg" alt="Mario Kart 64" />
+      <div class="shortcut-title">Frappe Snowland Skip</div>
+      <div class="shortcut-game">Mario Kart 64</div>
+      <div class="shortcut-description">Salta la curva cerrada para ahorrar tiempo en la vuelta.</div>
+    </div>
+
+    <!-- Mega Man X -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="shortcut-title">Dash Jump</div>
+      <div class="shortcut-game">Mega Man X</div>
+      <div class="shortcut-description">Usa el dash y salta para alcanzar plataformas lejanas rápidamente.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="shortcut-title">Hadouken Skip</div>
+      <div class="shortcut-game">Mega Man X</div>
+      <div class="shortcut-description">Obtén el Hadouken y derrota jefes de un solo golpe para avanzar rápido.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="shortcut-title">Wall Climb Glitch</div>
+      <div class="shortcut-game">Mega Man X</div>
+      <div class="shortcut-description">Escala paredes en ángulos para saltar zonas del nivel.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="shortcut-title">Boss Door Skip</div>
+      <div class="shortcut-game">Mega Man X</div>
+      <div class="shortcut-description">Usa el dash justo antes de la puerta del jefe para atravesarla sin esperar la animación.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="shortcut-title">Ride Armor Clip</div>
+      <div class="shortcut-game">Mega Man X</div>
+      <div class="shortcut-description">Usa el Ride Armor para atravesar paredes y llegar a zonas ocultas.</div>
+    </div>
+    <!-- The Legend of Zelda: The Minish Cap -->
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="The Minish Cap" />
+      <div class="shortcut-title">Minish Portal Skip</div>
+      <div class="shortcut-game">The Minish Cap</div>
+      <div class="shortcut-description">Usa el portal Minish en lugares específicos para saltar partes del mapa.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="The Minish Cap" />
+      <div class="shortcut-title">Bomb Hover</div>
+      <div class="shortcut-game">The Minish Cap</div>
+      <div class="shortcut-description">Coloca bombas y salta sobre ellas para alcanzar zonas altas rápidamente.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="The Minish Cap" />
+      <div class="shortcut-title">Ocarina Warp Glitch</div>
+      <div class="shortcut-game">The Minish Cap</div>
+      <div class="shortcut-description">Usa la ocarina en ciertos lugares para teletransportarte fuera de límites.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="The Minish Cap" />
+      <div class="shortcut-title">Boss Key Skip</div>
+      <div class="shortcut-game">The Minish Cap</div>
+      <div class="shortcut-description">Realiza movimientos precisos para saltar la obtención de la llave del jefe.</div>
+    </div>
+    <div class="shortcut-card">
+      <img class="shortcut-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="The Minish Cap" />
+      <div class="shortcut-title">Heart Piece Glitch</div>
+      <div class="shortcut-game">The Minish Cap</div>
+      <div class="shortcut-description">Obtén piezas de corazón usando glitches para completar el juego más rápido.</div>
+    </div>
+  </main>
+  <footer class="footer" id="footer">
+    <p>Síguenos en redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vj8CdVHW7sbzInZ0eATSvDdiYbiHWvCY_w&s" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </footer>
+  <script>
+    const footer = document.getElementById('footer');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+    window.addEventListener('load', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

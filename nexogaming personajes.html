@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexogaming - Personajes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+      margin: 0;
+      padding: 0;
+      background-image: url("https://w.wallhaven.cc/full/ym/wallhaven-ymwmek.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+    }
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.9);
+      border-right: 2px solid #09cf2a;
+      box-shadow: 4px 0 15px rgba(9, 207, 42, 0.4);
+      padding-top: 100px;
+      z-index: 1000;
+    }
+    nav.sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav.sidebar ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+    nav.sidebar ul li a {
+      color: #09cf2a;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      padding: 10px 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav.sidebar ul li a:hover {
+      background: #09cf2a;
+      color: #111;
+      border-radius: 8px;
+    }
+    main.content {
+      margin-left: 220px;
+      padding: 30px 40px 60px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      width: 100%;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    h1 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size: 38px;
+      margin: 30px 0 10px 0;
+      letter-spacing: 2px;
+      flex-basis: 100%;
+      width: 100%;
+    }
+    .person-card {
+      background: rgba(30, 30, 30, 0.92);
+      border: 2px solid #09cf2a;
+      border-radius: 18px;
+      width: 420px;
+      min-height: 260px;
+      box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0 0 32px 0;
+      padding: 24px 18px 18px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .person-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 40px #09cf2a, 0 0 20px #fff;
+      border-color: #fff;
+    }
+    .person-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #09cf2a55;
+      margin-bottom: 16px;
+      background: #222;
+      border: 2px solid #09cf2a;
+    }
+    .person-title {
+      color: #09cf2a;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+      letter-spacing: 1px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .person-description {
+      color: #fff;
+      font-size: 1.1em;
+      text-align: center;
+      line-height: 1.6;
+      margin: 0 0 10px 0;
+      word-break: break-word;
+    }
+    .person-extra {
+      color: #09cf2a;
+      font-size: 1em;
+      margin-top: 8px;
+      font-style: italic;
+      text-align: center;
+    }
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.75);
+      color: #09cf2a;
+      text-align: center;
+      padding: 8px 6px;
+      font-size: 15px;
+      box-shadow: 0 -2px 20px #09cf2a55;
+      border-top: 2px solid #09cf2a;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    body {
+      padding-bottom: 38px;
+    }
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+    .footer .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .footer .social-icons a:hover {
+      transform: scale(1.2);
+    }
+    .footer .social-icons img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 4px #09cf2a);
+    }
+    @media (max-width: 900px) {
+      main.content {
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 4vw 60px 4vw;
+      }
+      .person-card {
+        width: 98vw;
+        min-width: 0;
+      }
+      nav.sidebar {
+        width: 60px;
+        padding-top: 60px;
+      }
+      nav.sidebar ul li a {
+        font-size: 0;
+        padding: 10px 0;
+      }
+      nav.sidebar ul li a::before {
+        content: attr(data-icon);
+        font-size: 24px;
+        color: #09cf2a;
+        display: block;
+      }
+    }
+    .footer.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html" data-icon="🏠">Inicio</a></li>
+      <li><a href="nexogaming_juegos.html" data-icon="🎮">Juegos</a></li>
+      <li><a href="nexogaming_curiosidades.html" data-icon="❓">Curiosidades</a></li>
+      <li><a href="nexogaming_personajes.html" data-icon="👾">Personajes</a></li>
+      <li><a href="nexogaming_atajos.html" data-icon="⌨️">Atajos</a></li>
+    </ul>
+  </nav>
+  <main class="content">
+    <h1>Personajes de los juegos</h1>
+    <div class="person-card">
+      <img class="person-img" src="https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg" alt="DOOM Guy" />
+      <div class="person-title">DOOM Guy</div>
+      <div class="person-description">
+        El protagonista de DOOM, un marine espacial que combate hordas demoníacas en Marte y el infierno. Famoso por su fuerza, velocidad y arsenal de armas devastadoras.
+      </div>
+      <div class="person-extra">
+        Primer juego: DOOM (1993)
+      </div>
+    </div>
+    <div class="person-card">
+      <img class="person-img" src="https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250" alt="Link" />
+      <div class="person-title">Link</div>
+      <div class="person-description">
+        El héroe de Hyrule, protagonista de The Legend of Zelda. Destaca por su valentía, su espada y la habilidad de encogerse al tamaño de los Minish en The Minish Cap.
+      </div>
+      <div class="person-extra">
+        Primer juego: The Legend of Zelda (1986)
+      </div>
+    </div>
+    <div class="person-card">
+      <img class="person-img" src="https://howlongtobeat.com/games/5843_Mega_Man_X.png" alt="Mega Man X" />
+      <div class="person-title">Mega Man X</div>
+      <div class="person-description">
+        El robot azul que lucha contra Mavericks en un mundo futurista. Puede correr, escalar muros y disparar con su cañón de brazo, además de obtener habilidades de los jefes.
+      </div>
+      <div class="person-extra">
+        Primer juego: Mega Man X (1993)
+      </div>
+    </div>
+    <div class="person-card">
+      <img class="person-img" src="https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg" alt="Mario" />
+      <div class="person-title">Mario</div>
+      <div class="person-description">
+        El icónico fontanero de Nintendo, protagonista de Mario Kart 64 y muchos otros juegos. Compite en carreras llenas de obstáculos y power-ups junto a sus amigos del Reino Champiñón.
+      </div>
+      <div class="person-extra">
+        Primer juego: Donkey Kong (1981)
+      </div>
+    </div>
+    <div class="person-card">
+      <img class="person-img" src="https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png" alt="Mario World" />
+      <div class="person-title">Mario (Super Mario World)</div>
+      <div class="person-description">
+        En Super Mario World, Mario debe rescatar a la Princesa Peach y salvar el Reino Champiñón, acompañado por Yoshi, su fiel compañero dinosaurio.
+      </div>
+      <div class="person-extra">
+        Primer juego: Super Mario World (1990)
+      </div>
+    </div>
+    <div class="person-card">
+      <img class="person-img" src="https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png" alt="Marco Rossi" />
+      <div class="person-title">Marco Rossi</div>
+      <div class="person-description">
+        Líder de los Peregrine Falcon Squad en Metal Slug X. Experto en armas y explosivos, lucha contra el ejército rebelde y criaturas extrañas con humor y valentía.
+      </div>
+      <div class="person-extra">
+        Primer juego: Metal Slug (1996)
+      </div>
+    </div>
+
+    <div class="person-card">
+      <img class="person-img" src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg" alt="Donkey Kong" />
+      <div class="person-title">Donkey Kong</div>
+      <div class="person-description">
+        El poderoso gorila que protagoniza Donkey Kong 64. Explora niveles variados, resuelve puzzles y recupera sus bananas robadas por King K. Rool junto a sus amigos.
+      </div>
+      <div class="person-extra">
+        Primer juego: Donkey Kong (1981)
+      </div>
+    </div>
+
+         <div class="person-card">
+      <img class="person-img" src="https://upload.wikimedia.org/wikipedia/en/c/cd/Banjo_and_Kazooie_2000.png" alt="Donkey Kong" />
+      <div class="person-title">Banjo Tooie</div>
+      <div class="person-description">
+        El oso Banjo y su amiga pájaro Kazooie vuelven en Banjo Tooie para salvar a la hermana de Banjo de las garras de la bruja Gruntilda, explorando mundos llenos de secretos y desafíos.
+      </div>
+      <div class="person-extra">
+        Primer juego: Banjo Tooie (2000)
+      </div>
+    </div>
+
+         <div class="person-card">
+      <img class="person-img" src="https://assetsio.gnwcdn.com/conkers-bad-fur-designer-details-planned-sequel-that-never-was-1558737701084.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="Donkey Kong" />
+      <div class="person-title">Conker</div>
+      <div class="person-description">
+        El astuto y sarcástico ardilla protagonista de Conker's Bad Fur Day. Enfréntate a situaciones absurdas y humor adulto mientras intentas rescatar a tu novia Berri del malvado Rey Pantera.
+      </div>
+      <div class="person-extra">
+        Primer juego: Conker's Bad Fur Day (2001)
+    </div>
+    </div>
+
+<div class="person-card">
+      <img class="person-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRabljsbwlBsUmjQvGjWCc1iHQt8pT6foRcCw&s" alt="Donkey Kong" />
+      <div class="person-title">Link de Majora´s mask
+      </div>
+      <div class="person-description">
+        El héroe de Hyrule, protagonista de The Legend of Zelda: Majora's Mask. Enfréntate a un mundo oscuro y surrealista, utilizando máscaras con poderes únicos para salvar a Termina del apocalipsis.
+      </div>
+      <div class="person-extra">
+        Primer juego: The Legend of Zelda: Majora's Mask (2000)
+      </div>
+    </div>
+         
+ <div class="person-card">
+      <img class="person-img" src="https://cdn.mos.cms.futurecdn.net/w9KBmsaRpSY8AKotnfYcVU.jpg" alt="Donkey Kong" />
+      <div class="person-title">Personajes de Super Smash bros</div>
+      <div class="person-description">
+        Una variedad de personajes icónicos de Nintendo y otras franquicias se enfrentan en combates frenéticos. Desde Mario y Link hasta Pikachu y Samus, cada uno con habilidades únicas.
+      </div>
+      <div class="person-extra">
+        Primer juego: Super Smash Bros (1999)
+      </div>
+    </div>
+  <div class="person-card">
+      <img class="person-img" src="https://preview.redd.it/kirby-64-remake-just-a-old-edit-i-did-v0-6id4ynf4ubsa1.jpg?width=640&crop=smart&auto=webp&s=de0f9bbd7e624aa349e4cc172db3cb402ab8bcce" alt="Kirby 64" />
+      <div class="person-title">Kirby 64</div>
+      <div class="person-description">
+        El adorable Kirby regresa en Kirby 64: The Crystal Shards. Utiliza su habilidad para absorber poderes de los enemigos y combina habilidades para resolver puzzles en un mundo 3D colorido.
+      </div>
+      <div class="person-extra">
+        Primer juego: Kirby 64: The Crystal Shards (2000)
+      </div>
+    </div>
+  </main>
+  <footer class="footer" id="footer">
+    <p>Síguenos en redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vj8CdVHW7sbzInZ0eATSvDdiYbiHWvCY_w&s" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </footer>
+  <script>
+    const footer = document.getElementById('footer');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+    window.addEventListener('load', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

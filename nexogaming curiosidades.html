@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexogaming - Curiosidades de Personajes</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+      margin: 0;
+      padding: 0;
+      background-image: url("https://w.wallhaven.cc/full/ym/wallhaven-ymwmek.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Orbitron', Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    /* Menú lateral */
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.9);
+      border-right: 2px solid #09cf2a;
+      box-shadow: 4px 0 15px rgba(9, 207, 42, 0.4);
+      padding-top: 100px;
+      z-index: 1000;
+    }
+
+    nav.sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav.sidebar ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    nav.sidebar ul li a {
+      color: #09cf2a;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      padding: 10px 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav.sidebar ul li a:hover {
+      background: #09cf2a;
+      color: #111;
+      border-radius: 8px;
+    } /* Footer */
+.footer {
+  background: rgba(0, 0, 0, 0.75);
+  color: #09cf2a;
+  text-align: center;
+  padding: 8px 6px;      /* antes: 20px 10px */
+  font-size: 15px;
+  box-shadow: 0 -2px 20px #09cf2a55;
+  border-top: 2px solid #09cf2a;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+body {
+  padding-bottom: 58px;  /* ajusta el espacio para el nuevo alto del footer */
+}
+
+/* ...existing code... */
+
+    .footer.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+
+    .footer .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .footer .social-icons img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 4px #09cf2a);
+    }
+    h1 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size: 38px;
+      margin: 30px 0 10px 0;
+      letter-spacing: 2px;
+      flex-basis: 100%;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 40px 0;
+      flex-basis: 100%;
+    }
+
+    .logo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid #09cf2a;
+      box-shadow: 0 0 40px #09cf2a, 0 0 10px #fff;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Contenido principal */
+    main.content {
+      margin-left: 220px; /* espacio menú */
+      margin-right: 90px; /* espacio social */
+      padding: 20px 40px;
+      padding-bottom: 60px; /* espacio para footer */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      max-width: calc(100vw - 310px);
+      flex: 1;
+    }
+
+    .curiosity-card {
+      background: rgba(30, 30, 30, 0.85);
+      border: 2px solid #09cf2a;
+      border-radius: 18px;
+      width: 580px;  /* Más ancho, forma rectangular */
+      height: 250px; /* Menos alto para forma más rectangular */
+      box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+      display: flex;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .curiosity-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 40px #09cf2a, 0 0 20px #fff;
+      border-color: #fff;
+    }
+
+    /* Imagen en lado izquierdo */
+    .curiosity-image {
+      width: 40%;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.1) brightness(0.85);
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .curiosity-card:hover .curiosity-image {
+      filter: grayscale(0) brightness(1.1) drop-shadow(0 0 20px #09cf2a);
+    }
+
+    .curiosity-content {
+      padding: 18px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+      overflow: hidden;
+    }
+
+    .curiosity-title {
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #09cf2a;
+      text-shadow: 0 0 8px #09cf2a, 0 0 3px #000;
+      letter-spacing: 1.3px;
+    }
+
+    .curiosity-description {
+      font-size: 1.05em;
+      line-height: 1.4;
+      color: #eee;
+      overflow-y: auto;
+      max-height: 160px;
+    }
+    .game-link {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      margin-bottom: 22px;
+      padding: 8px 22px;
+      background: #09cf2a;
+      color: #111;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #09cf2a;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* Scrollbar styling for description */
+    .curiosity-description::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .curiosity-description::-webkit-scrollbar-thumb {
+      background: #09cf2a;
+      border-radius: 3px;
+    }
+
+    .curiosity-description::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1280px) {
+      .curiosity-card {
+        width: 90vw;
+        height: auto;
+        flex-direction: column;
+      }
+      .curiosity-image {
+        width: 100%;
+        height: 220px;
+      }
+      .curiosity-content {
+        width: 100%;
+        padding: 16px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav.sidebar {
+        width: 60px;
+        padding-top: 60px;
+      }
+      nav.sidebar ul li a {
+        font-size: 0;
+        padding: 10px 0;
+      }
+      nav.sidebar ul li a::before {
+        content: attr(data-icon);
+        font-size: 24px;
+        color: #09cf2a;
+        display: block;
+      }
+      main.content {
+        margin-left: 60px;
+        margin-right: 70px;
+        padding: 10px 10px;
+      }
+      .social-sidebar {
+        width: 50px;
+      }
+      .social-sidebar a {
+        font-size: 22px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome para iconos sociales -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html" data-icon="🏠">Inicio</a></li>
+      <li><a href="nexogaming juegos.html" data-icon="🎮">Juegos</a></li>
+      <li><a href="nexogaming curiosidades.html" data-icon="❓">Curiosidades</a></li>
+      <li><a href="nexogaming personajes.html" data-icon="👾">Personajes</a></li>
+      <li><a href="nexogaming atajos.html" data-icon="⌨️">Atajos</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Curiosidades de los Personajes</h1>
+    <div class="logo-container">
+      <div class="logo">
+        <img src="https://i.pinimg.com/736x/c7/74/4a/c7744af71ae07746877f839099632a31.jpg" alt="Logo Nexogamer" />
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">DOOM Slayer</div>
+        <div class="curiosity-description">
+          Aunque en los primeros títulos de DOOM el protagonista se conocía popularmente como "Doomguy", su nombre oficial “Doom Slayer” surge en entregas modernas. Además, el diseño del motor de DOOM permitió implementar efectos de luz dinámicos que en su momento dejaron atrás muchos de sus competidores. También es conocido por tirar el martillo de la gloria (“Glory Kill”) como una característica icónica de combate.
+       <a class="game-link" href=" https://youtu.be/mDic6_AOjXo?si=_5WuXHpm_N7NIHLg">Ver</a>
+        </div>
+      </div>
+    </div>
+     <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://i.redd.it/iwt7dba3qxfd1.jpeg');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Donkey kong 64</div>
+        <div class="curiosity-description">
+          Donkey Kong es uno de los personajes más icónicos de Nintendo, debutando en 1981. Originalmente, era un antagonista en el juego "Donkey Kong", donde capturaba a la novia de Mario, Pauline. Con el tiempo, Donkey Kong evolucionó a un héroe en sus propias aventuras, como la serie "Donkey Kong Country". Su diseño se basa en un gorila de montaña, y su nombre proviene de la combinación de "Donkey" (burro) y "Kong" (simio), lo que refleja su personalidad torpe pero entrañable.
+       <a class="game-link" href="https://youtu.be/qaq3Yh2Zloc?si=cNhCfjb9QQE2C8Pq">Ver</a> 
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://imgs.search.brave.com/vm6yqCIi86Gq5S1h4NK59yxvEeoW_Qe1gjFr1IHh0Iw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2NlLzQw/LzUwL2NlNDA1MGY5/NjdhZjQ4YTJmMDcw/MGUxMzA0ZDJkNTEz/LmpwZw');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Link</div>
+        <div class="curiosity-description">
+          Link fue diseñado para ser un héroe sin género definido al que los jugadores pudieran proyectarse. En muchos juegos cambia su apariencia dependiendo del contexto, pero siempre mantiene el gorro verde y la espada como símbolos iconográficos. En una entrega se pueden perder los colores habituales si el jugador no tiene suficientes vidas (“Shades of Link”).
+        <a class="game-link" href="https://youtu.be/ut77acy5G1I?si=dETiBculxCl4g9lt">Ver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://imgs.search.brave.com/_DICFNS0kdDFRZjSAHSRK8IPLLtgWloFKn_7b8jAgKk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zMy56/ZXJvY2hhbi5uZXQv/MjQwLzM4LzA3LzI4/NTAzODguYXZpZg');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Mega Man X</div>
+        <div class="curiosity-description">
+          Mega Man X fue diseñado como una versión “evolucionada” del Mega Man original, con enfoque en historia, emociones y consecuencias. Además, se planeó inicialmente que el protagonista fuera otro personaje distinto, pero se cambió por X por su mayor versatilidad en combate. También su armadura permite adaptarse a armas especiales de jefes derrotados, característica que revolucionó los juegos de acción al añadir rejugabilidad.
+        <a class="game-link" href="https://youtu.be/Z9oxeZPOsH0?si=cX1s82wGx61bUnEW">Ver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://imgs.search.brave.com/EpEW7yAkXedibRRKSFiLDWDd1ZUT-vSMODqrJzZ-XYs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tYXJp/by53aWtpLmdhbGxl/cnkvaW1hZ2VzL3Ro/dW1iLzQvNDUvTWFy/aW9fLV9NeU5pbnRl/bmRvLnBuZy8yNDBw/eC1NYXJpb18tX015/TmludGVuZG8ucG5n');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Mario</div>
+        <div class="curiosity-description">
+          Mario originalmente no tenía apellido. Su nombre completo de “Mario Mario” fue oficialmente mencionado en la película de Super Mario Bros (1993), pero desde entonces ha sido usado muy poco por Nintendo. También se considera uno de los personajes más reconocibles de la cultura pop, siendo traducido y adaptado en múltiples medios distintos.
+        <a class="game-link" href="https://youtu.be/DegtIbzWoCw?si=xvrO111R3qvI5_XV">Ver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://imgs.search.brave.com/gscfIxLeJmV98q4Ii1bZpdQn2ScGO58uykIttaPZIjE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzQ1Lzky/L2YyLzQ1OTJmMjU1/ZjQxMjlkNThiMzk5/MzExNDUzNDlmZDM2/LmpwZw');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Yoshi</div>
+        <div class="curiosity-description">
+          Yoshi apareció por primera vez en “Super Mario World” como montura de Mario, pero su diseño original incluía otras habilidades descartadas, como la habilidad de volar usando las aletas de su espalda. Además, tiene relaciones curiosas con otros personajes, como Birdo, con quien en versiones preliminares del juego existían confusiones sobre sus géneros según la localización.
+       <a class="game-link" href="https://youtu.be/emW8kFPFemA?si=FbnKcw9SZt9spYsg">Ver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png');"></div>
+      <div class="curiosity-content">
+        <div class="curiosity-title">Metal Slug X</div>
+        <div class="curiosity-description">
+          Metal Slug X es una entrega mejorada de Metal Slug 2 con ajustes en animaciones, balance de armas, y más enemigos. En su versión arcade se incluyeron niveles que no aparecieron en las versiones domésticas. También se caracteriza por su humor gráfico en descripciones de misión y enemigos únicos con diseños extravagantes.
+       <a class="game-link" href="https://youtu.be/Z2zLcZxcDmI?si=4oXYwSW87nsUSwa0">Ver</a>
+        </div>
+      </div>
+     </div>
+     <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BODIyMGVjZDctY2JjYi00NDU3LTljZTgtYmMzODM1OTk2OGYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');"></div>
+      <div class="curiosity-content"> 
+      <div class="curiosity-title">kirby 64</div>
+        <div class="curiosity-description">
+          
+En Kirby 64: The Crystal Shards, Kirby puede combinar 36 habilidades únicas en Combos de Poder. La versión beta del juego presentaba a Waddle Dee, Adeleine y Dedede como personajes jugables, a diferencia de la versión final
+       <a class="game-link" href="https://youtu.be/24ftTtNVv8g?si=fPqiWBwKjVkmXwJh">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+     <div class="curiosity-card">
+      <div class="curiosity-image" style="background-image: url('https://i0.wp.com/levelup.buscafs.com/2025/07/smash.jpg?fit=1280,720&quality=75&strip=all');"></div>
+      <div class="curiosity-content"> 
+      <div class="curiosity-title"> Super smash Bros</div>
+        <div class="curiosity-description">
+
+En Super Smash Bros, los personajes pueden interactuar en un entorno de lucha que combina elementos de diferentes franquicias de Nintendo. El juego presenta mecánicas únicas como el "Final Smash", un ataque especial que se activa al llenar un medidor. Además, la serie es conocida por su variada selección de personajes y escenarios, así como por su enfoque en el juego multijugador.
+       <a class="game-link" href="https://youtu.be/gPpwoUzY8uY?si=lQvdCQ3VvIcF5UyU">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div> 
+     <div class="curiosity-card">
+   <div class="curiosity-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMmM0Y2Q5NWYtYmYzNi00NzJhLWExNmItNTQwMTYxZDY2MWRkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');"></div>
+      <div class="curiosity-content"> 
+      <div class="curiosity-title">banjo-tooie</div>
+        <div class="curiosity-description">
+
+En Banjo-Tooie, los jugadores pueden explorar un mundo más grande y complejo que en su predecesor. El juego introduce la mecánica de "honeycomb" que permite a los jugadores aumentar su salud, y presenta nuevos movimientos y habilidades para Banjo y Kazooie. Además, la narrativa se expande con más personajes y misiones secundarias.
+       <a class="game-link" href="https://youtu.be/AExJT8hQQS0?si=E-J0H2hZSSJI7Zm6">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+     <div class="curiosity-card">
+   <div class="curiosity-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXVqmXa6PEw5tNkkKcgkeszO5bwlG_gmTN1w&s');"></div>
+      <div class="curiosity-content"> 
+      <div class="curiosity-title">conkers bad fur day</div>
+        <div class="curiosity-description">
+
+En Conker's Bad Fur Day, los jugadores controlan a Conker, un ardilla que busca regresar a casa después de una noche de borrachera. El juego es conocido por su humor adulto, referencias culturales y jugabilidad innovadora. A diferencia de otros juegos de plataformas de la época, este título presenta un enfoque más maduro y oscuro, con escenas memorables y un estilo visual distintivo.
+       <a class="game-link" href="https://youtu.be/MpGbS7RYiew?si=cHMhRnkCi6gMERS_">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<footer class="footer" id="footer">
+    <p>Síguenos en redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vj8CdVHW7sbzInZ0eATSvDdiYbiHWvCY_w&s" alt="Twitter" />
+      </a>
+      <a href="https://youtube.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const footer = document.getElementById('footer');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+
+    window.addEventListener('load', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

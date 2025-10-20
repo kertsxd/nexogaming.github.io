@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexogaming</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+      margin: 0;
+      padding: 0;
+      background-image: url("https://w.wallhaven.cc/full/ym/wallhaven-ymwmek.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Orbitron', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size: 38px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+    h2 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size:15px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+    h3 {
+      color: #09cf2a;
+      text-align: center;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #09cf2a;
+      font-size:26px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 40px 0;
+    }
+
+    .logo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid #09cf2a;
+      box-shadow: 0 0 40px #09cf2a, 0 0 10px #fff;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .games-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin: 40px auto;
+      max-width: 1100px;
+      flex: 1;
+    }
+
+    .game-card {
+      background: rgba(30, 30, 30, 0.85);
+      border: 2px solid #09cf2a;
+      border-radius: 18px;
+      width: 340px;         /* antes: 220px */
+      height: 480px;        /* antes: 320px */
+      box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 40px #09cf2a, 0 0 20px #fff;
+      border-color: #fff;
+    }
+
+    .game-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.2) brightness(0.85);
+      opacity: 0.85;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .game-card {
+        background: rgba(30, 30, 30, 0.85);
+        border: 2px solid #09cf2a;
+        border-radius: 18px;
+        width: 320px;         /* antes: 220px */
+        height: 420px;        /* antes: 320px */
+        box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        cursor: pointer;
+      }
+      
+      .game-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(0.2) brightness(0.85);
+        opacity: 0.85;
+        transition: filter 0.3s, opacity 0.3s;
+      }
+      
+      .game-title {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        font-size: 1.2em;         /* antes: 1.2em */
+        font-weight: bold;
+        text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+        margin-bottom: 18px;
+        margin-top: 300px;      /* antes: 180px */
+        text-align: center;
+        letter-spacing: 1px;
+      }
+      /* ...existing code... */
+
+    @media (max-width: 900px) {
+      .games-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.75);
+      color: #09cf2a;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 16px;
+      box-shadow: 0 -2px 20px #09cf2a55;
+      border-top: 2px solid #09cf2a;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+      z-index: 100;
+    }
+
+    .footer.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .footer .social-icons {
+      margin-top: 10px;
+    }
+
+    .footer .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .footer .social-icons img {
+      width: 32px;
+      height: 32px;
+      filter: drop-shadow(0 0 4px #09cf2a);
+    }
+    /* Menú lateral */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.9);
+  border-right: 2px solid #09cf2a;
+  box-shadow: 4px 0 15px rgba(9, 207, 42, 0.4);
+  padding-top: 100px;
+  z-index: 1000;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #09cf2a;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  padding: 10px 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: #09cf2a;
+  color: #111;
+  border-radius: 8px;
+}
+
+/* Espacio al contenido por el menú lateral */
+body {
+  padding-left: 200px;
+}
+
+  </style>
+  <style>
+.info-card {
+  background: rgba(30, 30, 30, 0.92);
+  border: 2px solid #09cf2a;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 480px;
+  min-height: 180px;
+  box-shadow: 0 0 24px #09cf2a55, 0 0 8px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px auto;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.info-card h2 {
+  color: #09cf2a;
+  font-size: 1.6em;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px #09cf2a, 0 0 2px #000;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.info-card p {
+  color: #fff;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+</style>
+
+   
+  <!-- Fuente cyberpunk -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <h1>Bienvenidos a Nexogamer</h1>
+  <div class="logo-container">
+    <div class="logo">
+      <!-- Cambia la URL de abajo por la de tu logo -->
+      <img src="https://i.pinimg.com/736x/c7/74/4a/c7744af71ae07746877f839099632a31.jpg" alt="Logo Nexogamer" />
+    </div>
+  </div>
+  <div class="info-card">
+    <h2>¿Qué es Nexogamer?</h2>
+    <p>
+      Nexogamer es una página dedicada a la emulación de videojuegos clásicos, ofreciendo a los usuarios la oportunidad de revivir sus títulos favoritos de consolas antiguas a través de emuladores confiables y fáciles de usar.
+    </p>
+</div>
+  <h3>Principales juegos emulados desde el inicio de la pagina</h3>
+  <div class="games-section">
+    <!-- Cambia la propiedad background-image de cada .game-image por la imagen que quieras para cada juego -->
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg');"
+      ></div>
+      <div class="game-title">DOOM</div>
+      <h2>shooter en primera persona frenético que combina combate intenso, movimiento ágil y el uso de armas devastadoras para aniquilar hordas demoníacas.</h2>
+
+     
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://howlongtobeat.com/games/10044_The_Legend_of_Zelda_The_Minish_Cap.png?width=250');"
+      ></div>
+      <div class="game-title">The Legend of Zelda</div>
+      <h2>aventura donde el jugador controla a Link, pero se distingue por la habilidad de encogerse al tamaño de los Minish (o Picori) gracias al sombrero parlante</h2>
+
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://howlongtobeat.com/games/5843_Mega_Man_X.png');"
+      ></div>
+      <div class="game-title">Mega Man</div>
+      <h2>juego de plataformas que trajo  la introducción de movimientos como correr, escalar muros y saltar de ellos, además de los clásicos disparos con el cañón de brazo</h2>
+
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://cdn.mobygames.com/covers/3986864-mario-kart-64-nintendo-64-front-cover.jpg');"
+      ></div>
+      <div class="game-title">Mario Kart 64</div>
+      <h2>juego de carreras que presenta a personajes del universo de Mario compitiendo en karts a través de diversos circuitos llenos de obstáculos y power-ups.</h2>
+     
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png');"
+      ></div>
+      <div class="game-title">Mario World</div>
+      <h2>plataformas en 2D donde Mario debe rescatar a la Princesa Peach y salvar el Reino Champiñón, introduciendo a Yoshi como un compañero montable.</h2>
+     
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://meridiem-games.com/backoffice/public/uploads/games/wrNtyE.png');"
+      ></div>
+      <div class="game-title">Metal Slug X</div>
+      <h2>shooter de desplazamiento lateral conocido por su acción rápida, gráficos detallados y humor, donde los jugadores luchan contra un ejército rebelde y criaturas extrañas.</h2>
+      
+    </div>
+    <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co289i.jpg');"
+        alt
+        width="80"
+        height="100"
+      ></div>
+      <div class="game-title">Donkey Kong 64</div>
+      <h2>aventura en 3D donde los jugadores controlan a Donkey Kong y sus amigos para recuperar sus bananas robadas por King K. Rool, explorando niveles variados y resolviendo puzzles.</h2>
+    </div>
+
+   <div class="game-card">
+      <div
+        class="game-image"
+        style="background-image: url('https://coverproject.sfo2.cdn.digitaloceanspaces.com/nintendo_64/label_n64_banjotooie_thumb.jpg');"
+        alt
+        width="80"
+        height="100"
+      ></div>
+      <div class="game-title">Banjo Tooie
+      </div>
+      <h2>Adentratre en una aventura en 3D donde controlamos a 
+        nuestro duo Banjo y Kazooie, ayudalos a rescatar a la hermana de Banjo de las manos de brujilda.</h2>
+    </div>
+
+  </div>
+  <body>
+  <!-- MENÚ LATERAL --> <nav class="sidebar">
+    <ul>
+      <li><a href="Nexogaming.html">Inicio</a></li>
+      <li><a href="nexogaming juegos.html">Juegos</a></li>
+      <li><a href="nexogaming curiosidades.html">Curiosidades</a></li>
+      <li><a href="nexogaming personajes.html">Personajes</a></li>
+      <li><a href="nexogaming atajos.html">Atajos</a></li>
+    </ul>
+  </nav>
+  <footer class="footer" id="footer">
+    <p>Síguenos en redes sociales:</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/people/NexoGamingSv/61581264068631/?rdid=uqbpNIHJ5vrJgVSK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1P2aKhCKbD%2F" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
+      </a>
+      <a href="https://www.instagram.com/nexogaming_sv/?next=%2F" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://x.com/MValle83951" target="_blank">
+        <img src="https://play-lh.googleusercontent.com/XyI6Hyz9AFg7E_joVzX2zh6CpWm9B2DG2JuEz5meCFVm4-wTKTnHgqbmg62iFKe4Gzca" alt="X" />
+      </a>
+      <a href="https://www.youtube.com/@medardovalle8173" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const footer = document.getElementById('footer');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      } else {
+        footer.classList.remove('hidden');
+      }
+    });
+
+    window.addEventListener('load', () => {
+      if (window.scrollY < 100) {
+        footer.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
