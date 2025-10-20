@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mario kart 64</title>
+    <link href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTquuyimh9DgOGBgki2Hu3P3mSWiwFTn_bJaw&s" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 60%, #ece906 100%);
+            color: #fff;
+            font-family: 'Orbitron', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://jogoveio.com.br/wp-content/uploads/2022/12/thumb-mariokart64hd.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px #f70707;
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #fdf909;
+            text-shadow: 2px 2px 8px #000;
+            margin-bottom: 10px;
+        }
+        .zelda-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #e0f003;
+            margin: 20px auto;
+            display: block;
+        }
+        .btn {
+            display: inline-block;
+            background: #c9df03;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px #ebdb01;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #ffe602;
+        }
+        ul {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        #emulator-container {
+            width: 100%;
+            max-width: 780px;
+            height: 640px;
+            margin: 20px auto;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #f3ef01;
+            position: relative;
+        }
+        #emulator-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #d2e909;
+            text-shadow: 0 0 5px #eed706;
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mario kart 64</h1>
+        <img src="https://media.vandal.net/m/35608/mario-kart-64-cv-201612111243_1.jpg" alt="Mario kart 64" class="metal Slug X-img">
+        <p>¡Bienvenido preparate para competir por la copa champiñon .</p>
+
+        <div style="background:rgba(0,0,0,0.7);border-radius:10px;padding:10px;margin-bottom:20px;">
+            <h2 style="color:#ffcc00;">Controles básicos</h2>
+            <ul>
+                <li><b>IKJL</b>: Moverse</li>
+                <li><b>E</b>: lanzar objetos</li>
+                <li><b>A</b>: Retroceder</li>
+                <li><b>S</b>: acelerar</li>
+                <li><b>Enter</b>: Start (pausa/menú)</li>
+                <li><b>D</b>: Derrapar </li>
+            </ul>
+            <p>El juego comenzará.Por favor espera...</p>
+        </div>
+
+        <!-- Contenedor del emulador -->
+        <div id="emulator-container">
+            
+            <iframe id="emulator-frame" src="about:blank"></iframe>
+        </div>
+
+        <a href="nexogaming juegos.html" class="btn">Volver al Nexo</a>
+    </div>
+ <body>
+        <div style="width:100%;height:100%;max-width:100%">
+            <div id="game"></div>
+        </div>
+        <script>
+            EJS_player = "#emulator-container";
+            EJS_core = "n64";
+            EJS_gameName = "MK64";
+            EJS_color = "#0064ff";
+            EJS_startOnLoaded = true;
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            EJS_gameUrl = "Mario Kart 64 (Europe) (Rev A).n64";
+        </script>
+        <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+    </body>
+</html>

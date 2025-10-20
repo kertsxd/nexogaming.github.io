@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Legend of Zelda: The Minish Cap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.emulatorjs.org/stable/loader.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 60%, #09cf2a 100%);
+            color: #fff;
+            font-family: 'Orbitron', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images3.alphacoders.com/631/631745.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px #05da3a;
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #0bdf5c;
+            text-shadow: 2px 2px 8px #000;
+            margin-bottom: 10px;
+        }
+        .zelda-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #07e907;
+            margin: 20px auto;
+            display: block;
+        }
+        .btn {
+            display: inline-block;
+            background: #cde400;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px #2bc20d;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #009eb3;
+        }
+        ul {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        #emulator-container {
+            width: 100%;
+            max-width: 640px;
+            height: 480px;
+            margin: 20px auto;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #0dd31d;
+            position: relative;
+            overflow: hidden;
+        }
+        #loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00fffc;
+            text-shadow: 0 0 5px #00fffc;
+            font-family: 'Orbitron', sans-serif;
+            z-index: 10;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .controls-info {
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .controls-info h2 {
+            color: #ffcc00;
+            margin-top: 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Legend of Zelda: The Minish Cap</h1>
+        <img src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3nsk.jpg" alt="The Legend of Zelda: The Minish Cap" class="zelda-img">
+        <p>¡Bienvenido a una nueva aventura de Link! Explora mazmorras, resuelve acertijos y salva Hyrule.</p>
+
+        <div class="controls-info">
+            <h2>Controles básicos</h2>
+            <ul>
+                <li><b>IKJL</b>: Moverse</li>
+                <li><b>Z</b>: Botón A (acción/confirmar)</li>
+                <li><b>X</b>: Botón B (espada/cancelar)</li>
+                <li><b>A</b>: Botón L</li>
+                <li><b>S</b>: Botón R</li>
+                <li><b>Enter</b>: Start (pausa/menú)</li>
+                <li><b>Espacio</b>: Select</li>
+            </ul>
+            <p>El juego comenzará automáticamente. Por favor espera...</p>
+        </div>
+
+       
+        <div id="emulator-container">
+            </div>
+        
+
+        <a href="nexogaming juegos.html" class="btn">Volver al Nexo</a>
+        
+    </div>
+     <div style="width:100%;height:100%;max-width:100%">
+            <div id="game"></div>
+        </div>
+
+    <script>
+      
+            EJS_player = "#emulator-container";
+            EJS_core = "gba";
+            EJS_gameName = "zelda the minish";
+            EJS_color = "#56e14c";
+            EJS_startOnLoaded = true;
+            EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+            EJS_gameUrl = "zelda.gba";
+            EJS_controls = [
+                {key: 'I', pad: 'up'},
+                {key: 'K', pad: 'down'},
+                {key: 'J', pad: 'left'},
+                {key: 'L', pad: 'right'},
+                {key: 'Z', pad: 'a'},
+                {key: 'X', pad: 'b'},
+        ];
+        window.EJS_onLoaded = function() {
+            document.getElementById('loading-message').style.display = 'none';
+        };
+        window.EJS_onError = function(error) {
+            document.getElementById('loading-message').textContent = "Error al cargar el juego: " + error;
+            console.error("Error del emulador:", error);
+        };
+        window.EJS_startOnLoad = true;
+    </script>
+       <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+</html>
